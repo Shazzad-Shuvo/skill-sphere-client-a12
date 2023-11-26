@@ -7,12 +7,13 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>All Classes</Link></li>
         <li><Link to='/'>Teach On Skill Sphere</Link></li>
-        <li><Link to='/'>Sign In</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/signUp'>sign Up</Link></li>
     </>
 
 
     return (
-        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/30 to-blue-500/80 z-10">
+        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/80 to-blue-500/80 sticky top-0 glass z-10 text-gray-600">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -22,9 +23,9 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <img className="w-32" src="https://i.ibb.co/tQV1SMG/Skill-sphere-removebg-preview.png" alt="" />
+                <img className="w-36" src="https://i.ibb.co/tQV1SMG/Skill-sphere-removebg-preview.png" alt="" />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex p-4 border-y-2 border-cyan-200 text-zinc-50 font-medium rounded-box">
                 <ul className="menu menu-horizontal px-1">
                     {navLinks}
                 </ul>
