@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import 'animate.css';
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
@@ -15,7 +15,7 @@ const SignUp = () => {
         reset,
         formState: { errors },
     } = useForm();
-    
+
     const { createUser, updateUserProfile } = useAuth();
 
 
@@ -28,7 +28,7 @@ const SignUp = () => {
 
                 updateUserProfile(data.name, data.photoUrl)
                     .then(() => {
-                        // create user entry in the database
+                        // create user entry in the database collection
                         const userInfo = {
                             name: data.name,
                             email: data.email
@@ -40,11 +40,24 @@ const SignUp = () => {
 
                                     reset();
                                     Swal.fire({
-                                        position: "top-end",
                                         icon: "success",
-                                        title: "Registered Successfully!!",
+                                        title: "User Registered Successfully!!",
                                         showConfirmButton: false,
-                                        timer: 1500
+                                        timer: 1500,
+                                        showClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeInUp
+                                            animate__faster
+                                          `
+                                        },
+                                        hideClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeOutDown
+                                            animate__faster
+                                          `
+                                        }
                                     });
                                     navigate('/');
                                 }
@@ -114,13 +127,12 @@ const SignUp = () => {
                                 )}
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" value="Sign Up" className="btn bg-[#D1A054B2] hover:bg-[#a96418b2] text-white" />
+                                <input type="submit" value="Sign Up" className="btn bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white" />
                             </div>
                             <div className='text-center'>
-                                <p><small className='text-[#D1A054B2]'>Already registered? <Link className='font-semibold hover:underline' to='/login'>Go to login</Link></small></p>
+                                <p><small>Already registered? <Link className=' text-blue-600 font-semibold hover:underline' to='/login'>Go to login</Link></small></p>
                             </div>
                         </form>
-                        <SocialLogin></SocialLogin>
 
                     </div>
                 </div>

@@ -1,14 +1,40 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+    const { user, logOut } = useAuth();
+    console.log(user);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
 
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>All Classes</Link></li>
         <li><Link to='/'>Teach On Skill Sphere</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signUp'>sign Up</Link></li>
+        {
+            user ? '' : <li><Link to='/login'>Login</Link></li>
+        }
+        
+    </>
+
+    const profileNavLinks = <>
+        {
+            user &&
+            <>
+                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                    <p className="ml-3 mt-3 font-semibold">{user.displayName}</p>
+                    <div className="divider"></div>
+                    <li><Link>Dashboard</Link></li>
+                    <li onClick={handleLogOut}><Link>Log Out</Link></li>
+                </ul>
+
+            </>
+        }
     </>
 
 
@@ -34,15 +60,10 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end mr-5">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <img src={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/HgjNYM5/836.jpg'} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <p className="ml-3 mt-3 font-semibold">Shazzad Shuvo</p>
-                        <div className="divider"></div>
-                        <li><a>Dashboard</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
+                    {profileNavLinks}
                 </div>
             </div>
         </div>
