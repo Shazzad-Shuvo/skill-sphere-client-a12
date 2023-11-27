@@ -15,7 +15,7 @@ const Navbar = () => {
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>All Classes</Link></li>
-        <li><Link to='/'>Teach On Skill Sphere</Link></li>
+        <li><Link to='/teach'>Teach On Skill Sphere</Link></li>
         {
             user ? '' : <li><Link to='/login'>Login</Link></li>
         }
@@ -39,7 +39,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/80 to-blue-500/80 sticky top-0 glass z-10 text-gray-600">
+        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/80 to-blue-500/80 glass z-10 text-gray-600">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
