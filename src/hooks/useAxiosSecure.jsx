@@ -11,21 +11,22 @@ const useAxiosSecure = () => {
     const {logOut} = useAuth();
     const navigate = useNavigate();
 
-    axios.interceptors.request.use(function(config){
+    axiosSecure.interceptors.request.use(function(config){
         const token = localStorage.getItem('access-token');
+        // console.log(token);
         config.headers.authorization = `Bearer ${token}`;
         return config;
     }, function(error){
         return Promise.reject(error);
     });
 
-    axios.interceptors.response.use(function(response){
+    axiosSecure.interceptors.response.use(function(response){
         return response;
     }, function(error){
         const status = error.response.status;
-        if(status === '401' || status === '403'){
+        if(status === 401 || status === 403){
             logOut();
-            navigate('/');
+            navigate('/login');
         }
 
         return Promise.reject(error);

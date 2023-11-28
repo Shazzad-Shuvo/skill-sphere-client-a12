@@ -3,7 +3,6 @@ import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -39,7 +38,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/80 to-blue-500/80 glass z-10 text-gray-600">
+        <div className="navbar max-w-screen-xl bg-gradient-to-r from-cyan-300/80 to-blue-500/80 sticky glass z-10 text-gray-600">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
