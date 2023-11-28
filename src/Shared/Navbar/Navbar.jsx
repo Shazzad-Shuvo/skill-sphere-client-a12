@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
+import useTeacher from "../../hooks/useTeacher";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
+    console.log(user);
+    const [isAdmin] = useAdmin();
+    const [isTeacher] = useTeacher();
 
     const handleLogOut = () => {
         logOut()
@@ -28,7 +33,9 @@ const Navbar = () => {
                 <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                     <p className="ml-3 mt-3 font-semibold">{user.displayName}</p>
                     <div className="divider"></div>
-                    <li><Link>Dashboard</Link></li>
+                    {
+                        user && isAdmin && <li><Link to={`/dashboard/adminProfile/${user.email}`}>Dashboard</Link></li>
+                    }
                     <li onClick={handleLogOut}><Link>Log Out</Link></li>
                 </ul>
 

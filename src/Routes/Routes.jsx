@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import TeachRequest from "../Pages/TeachRequest/TeachRequest";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
+import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 
 
 
@@ -39,8 +40,10 @@ export const router = createBrowserRouter([
     children: [
       // admin only routes
       {
-        path: ''
-      }
+        path: 'adminProfile/:email',
+        element: <AdminProfile></AdminProfile>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
+      },
     ]
   }
 ]);
