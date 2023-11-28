@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import AdminRoute from "./AdminRoute";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
       },
+      {
+        path: 'users',
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      }
     ]
   }
 ]);

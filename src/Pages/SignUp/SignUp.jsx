@@ -31,6 +31,7 @@ const SignUp = () => {
                         // create user entry in the database collection
                         const userInfo = {
                             name: data.name,
+                            photo: data.photoUrl,
                             phone: data.phone,
                             email: data.email
                         };
