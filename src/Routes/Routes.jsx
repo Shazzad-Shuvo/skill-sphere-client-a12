@@ -5,6 +5,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import TeachRequest from "../Pages/TeachRequest/TeachRequest";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
 
 
 
@@ -32,4 +33,14 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      // admin only routes
+      {
+        path: ''
+      }
+    ]
+  }
 ]);
