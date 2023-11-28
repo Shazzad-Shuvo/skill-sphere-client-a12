@@ -14,8 +14,8 @@ const AdminProfile = () => {
                 <div className="text-center mt-2 font-light text-lg text-gray-500">{admin.email}</div>
                 <div className="text-center font-normal text-lg">Role: {admin.role}</div>
                 <div className="px-6 text-center mt-2 font-light text-sm">
-                    <p>
-                        
+                    <p className="font-medium">
+                        Phone: {admin.phone}
                     </p>
                 </div>
                 <hr className="mt-8"/>

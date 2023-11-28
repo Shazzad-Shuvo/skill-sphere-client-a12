@@ -31,6 +31,7 @@ const SignUp = () => {
                         // create user entry in the database collection
                         const userInfo = {
                             name: data.name,
+                            phone: data.phone,
                             email: data.email
                         };
                         axiosPublic.post('/users', userInfo)
@@ -95,6 +96,21 @@ const SignUp = () => {
                                 </label>
                                 <input type="text" {...register("photoUrl", { required: true })} placeholder="photo URL" className="input input-bordered" />
                                 {errors.photoUrl && <span className="text-red-600 mt-2">Photo is required</span>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Phone</span>
+                                </label>
+                                <input type="text" {...register("phone", { 
+                                    required: true,
+                                    minLength: 11
+                                 })} name="phone" placeholder="phone" className="input input-bordered" />
+                                {errors.phone?.type === "required" && (
+                                    <p className="text-red-600 mt-2">Phone number is required</p>
+                                )}
+                                {errors.phone?.type === "minLength" && (
+                                    <p className="text-red-600 mt-2">Phone number must be at least 11 digits</p>
+                                )}
                             </div>
                             <div className="form-control">
                                 <label className="label">
