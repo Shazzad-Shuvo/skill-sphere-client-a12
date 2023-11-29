@@ -71,7 +71,7 @@ const TeacherRequests = () => {
     return (
         <div>
             <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All User</h2>
+                <h2 className="text-3xl">Teacher Requests</h2>
             </div>
             <div className="overflow-x-auto mt-10">
                 <table className="table table-zebra">

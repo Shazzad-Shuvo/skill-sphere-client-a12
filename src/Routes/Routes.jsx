@@ -13,6 +13,8 @@ import TeacherRequests from "../Pages/Dashboard/TeacherRequests/TeacherRequests"
 import TeacherRoute from "./TeacherRoute";
 import TeacherProfile from "../Pages/Dashboard/TeacherProfile/TeacherProfile";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
 
 
 
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
       {
         path: 'addClass',
         element: <TeacherRoute><AddClass></AddClass></TeacherRoute>
+      },
+      {
+        path: 'myClass',
+        element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
+      },
+      {
+        path: 'updateClass/:id',
+        element: <TeacherRoute><UpdateClass></UpdateClass></TeacherRoute>
       }
 
       // normal user routes
