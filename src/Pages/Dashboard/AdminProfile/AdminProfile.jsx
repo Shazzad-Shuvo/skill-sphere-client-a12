@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
 
 const AdminProfile = () => {
     const admin = useLoaderData();

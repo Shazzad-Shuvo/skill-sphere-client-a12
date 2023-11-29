@@ -65,7 +65,7 @@ const Dashboard = () => {
                                             <li>
                                                 <NavLink to='/dashboard/myClass'>
                                                     <FaBook></FaBook>
-                                                    My Class
+                                                    My Classes
                                                 </NavLink>
                                             </li>
                                         </>

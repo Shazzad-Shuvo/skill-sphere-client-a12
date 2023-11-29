@@ -67,14 +67,14 @@ const TeachRequest = () => {
         }
     })
     refetch();
-    // console.log(teacherStatus.status);
+    console.log(teacherStatus[0]);
 
 
     return (
-        <div>
+        <div className="min-h-screen">
 
             {
-                teacherStatus?.status === 'accepted' ?
+                teacherStatus[0]?.status === 'accepted' ?
                     <div className="flex justify-center items-center my-20">
                         <h2 className="text-5xl font-bold text-cyan-500">You have been accepted as a teacher!</h2>
                     </div>
@@ -84,10 +84,10 @@ const TeachRequest = () => {
                             <h2 className="text-4xl font-extrabold mb-8 text-center ">Apply to be a Teacher</h2>
                             <div className="flex justify-center items-center my-6">
                                 {
-                                    teacherStatus?.status === 'pending' &&
+                                    teacherStatus[0]?.status === 'pending' &&
                                     <h2 className="text-3xl font-semibold text-cyan-500">Request submitted for review</h2>
                                     ||
-                                    teacherStatus?.status === 'rejected' &&
+                                    teacherStatus[0]?.status === 'rejected' &&
                                     <h2 className="text-3xl font-semibold text-cyan-500">Sorry! Request rejected. Try again...</h2>
                                 }
                             </div>
@@ -155,7 +155,7 @@ const TeachRequest = () => {
                                 </div>
                             </div>
                             {
-                                teacherStatus?.status === 'rejected' ?
+                                teacherStatus[0]?.status === 'rejected' ?
                                     <input type="submit" value="Request to another" className="btn w-full bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white" />
                                     :
                                     <input type="submit" value="Submit for Review" className="btn w-full bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white" />

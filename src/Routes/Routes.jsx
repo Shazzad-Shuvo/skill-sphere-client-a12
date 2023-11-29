@@ -12,6 +12,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import TeacherRequests from "../Pages/Dashboard/TeacherRequests/TeacherRequests";
 import TeacherRoute from "./TeacherRoute";
 import TeacherProfile from "../Pages/Dashboard/TeacherProfile/TeacherProfile";
+import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 
 
 
@@ -63,7 +64,10 @@ export const router = createBrowserRouter([
         path: 'teacherProfile/:email',
         element: <TeacherRoute><TeacherProfile></TeacherProfile></TeacherRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
-
+      },
+      {
+        path: 'addClass',
+        element: <TeacherRoute><AddClass></AddClass></TeacherRoute>
       }
 
       // normal user routes
