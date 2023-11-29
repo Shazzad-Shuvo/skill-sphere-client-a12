@@ -36,6 +36,9 @@ const Navbar = () => {
                     {
                         user && isAdmin && <li><Link to={`/dashboard/adminProfile/${user.email}`}>Dashboard</Link></li>
                     }
+                    {
+                        user && isTeacher && <li><Link to={`/dashboard/teacherProfile/${user.email}`}>Dashboard</Link></li>
+                    }
                     <li onClick={handleLogOut}><Link>Log Out</Link></li>
                 </ul>
 

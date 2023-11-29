@@ -9,6 +9,9 @@ import Dashboard from "../Layout/Dashboard";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import AdminRoute from "./AdminRoute";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import TeacherRequests from "../Pages/Dashboard/TeacherRequests/TeacherRequests";
+import TeacherRoute from "./TeacherRoute";
+import TeacherProfile from "../Pages/Dashboard/TeacherProfile/TeacherProfile";
 
 
 
@@ -47,9 +50,23 @@ export const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
       },
       {
+        path: 'teacherRequests',
+        element: <AdminRoute><TeacherRequests></TeacherRequests></AdminRoute>
+      },
+      {
         path: 'users',
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      },
+
+      // teacher only routes
+      {
+        path: 'teacherProfile/:email',
+        element: <TeacherRoute><TeacherProfile></TeacherProfile></TeacherRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
+
       }
+
+      // normal user routes
     ]
   }
 ]);

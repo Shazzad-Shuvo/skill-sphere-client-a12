@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
-import useAuth from "../../../hooks/useAuth";
+import { FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
-    const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
     const { data: users = [], refetch } = useQuery({
@@ -16,15 +15,31 @@ const AllUsers = () => {
         }
     })
 
+    const handleMakeAdmin = (user) => {
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} has been converted to Admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
 
 
     return (
         <div>
             <div className="flex justify-evenly my-4">
                 <h2 className="text-3xl">All User</h2>
-                <h2 className="text-3xl">Total User: {users.length}</h2>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mt-10">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -54,6 +69,15 @@ const AllUsers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>
+                                        <div className="tooltip" data-tip="Make Admin">
+                                            {
+                                                user.role === 'admin' ? 'Admin' : <button
+                                                    onClick={() => handleMakeAdmin(user)}
+                                                    className="btn bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white">
+                                                    <FaUsers className="text-white text-xl"></FaUsers>
+                                                </button>
+                                            }
+                                        </div>
 
                                     </td>
                                     <td>
