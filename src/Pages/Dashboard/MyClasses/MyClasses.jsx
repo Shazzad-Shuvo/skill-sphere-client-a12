@@ -18,7 +18,33 @@ const MyClasses = () => {
         }
     });
 
-    
+    const handleDeleteClass = (aClass) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/classes/${aClass._id}`);
+                if (res.data.deletedCount > 0) {
+                    // refetch to update the ui
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${aClass.title} deleted successfully!`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+
+            }
+        });
+    }
 
 
     return (
