@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>All Classes</Link></li>
+        <li><Link to='/allClass'>All Classes</Link></li>
         <li><Link to='/teach'>Teach On Skill Sphere</Link></li>
         {
             user ? '' : <li><Link to='/login'>Login</Link></li>

@@ -16,6 +16,8 @@ import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
 import AllClassRequests from "../Pages/Dashboard/AllClassRequests/AllClassRequests";
+import AllClasses from "../Pages/AllClasses/AllClasses";
+import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 
 
 
@@ -28,6 +30,15 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/allClass',
+        element: <AllClasses></AllClasses>,
+        loader: () => fetch('http://localhost:5000/allApprovedClasses')
+      },
+      {
+        path: '/class/:id',
+        element: <ClassDetails></ClassDetails>
       },
       {
         path: '/teach',
