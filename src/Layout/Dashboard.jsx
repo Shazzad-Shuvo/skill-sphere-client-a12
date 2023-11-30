@@ -32,9 +32,9 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/classes'>
+                                    <NavLink to='/dashboard/allClassRequests'>
                                         <FaBook></FaBook>
-                                        All Classes
+                                        All Class Requests
                                     </NavLink>
                                 </li>
                                 <li>
