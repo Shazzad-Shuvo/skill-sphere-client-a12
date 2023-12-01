@@ -20,6 +20,7 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
 import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 import Payment from "../Pages/Home/Payment/Payment";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses/EnrolledClasses";
 
 
 
@@ -34,25 +35,25 @@ export const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/allClass',
+        path: 'allClass',
         element: <AllClasses></AllClasses>,
         loader: () => fetch('http://localhost:5000/allApprovedClasses')
       },
       {
-        path: '/classDetails/:id',
+        path: 'classDetails/:id',
         element: <PrivateRoute><ClassDetails></ClassDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
       },
       {
-        path: '/teach',
+        path: 'teach',
         element: <PrivateRoute><TeachRequest></TeachRequest></PrivateRoute>
       },
       {
-        path: '/signUp',
+        path: 'signUp',
         element: <SignUp></SignUp>
       },
       {
-        path: '/login',
+        path: 'login',
         element: <Login></Login>
       }
     ]
@@ -105,6 +106,11 @@ export const router = createBrowserRouter([
         path: 'userProfile/:email',
         element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
+      },
+      {
+        path: 'enrolled/:email',
+        element: <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>,
+        // loader: ({params}) => fetch(`http://localhost:5000/enrolled/${params.email}`)
       },
       {
         path: 'payment/:id',

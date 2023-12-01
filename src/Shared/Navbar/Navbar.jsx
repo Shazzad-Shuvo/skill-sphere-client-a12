@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAdmin from "../../hooks/useAdmin";
 import useTeacher from "../../hooks/useTeacher";
+import { MdLogout } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
@@ -34,15 +36,15 @@ const Navbar = () => {
                     <p className="ml-3 mt-3 font-semibold">{user.displayName}</p>
                     <div className="divider"></div>
                     {
-                        user && isAdmin && <li><Link to={`/dashboard/adminProfile/${user.email}`}>Dashboard</Link></li>
+                        user && isAdmin && <li><Link to={`/dashboard/adminProfile/${user.email}`}><RxDashboard className="text-lg"></RxDashboard> Dashboard</Link></li>
                     }
                     {
-                        user && isTeacher && <li><Link to={`/dashboard/teacherProfile/${user.email}`}>Dashboard</Link></li>
+                        user && isTeacher && <li><Link to={`/dashboard/teacherProfile/${user.email}`}><RxDashboard className="text-lg"></RxDashboard> Dashboard</Link></li>
                     }
                     {
-                        user && !isTeacher && !isAdmin && <li><Link to={`/dashboard/userProfile/${user.email}`}>Dashboard</Link></li>
+                        user && !isTeacher && !isAdmin && <li><Link to={`/dashboard/userProfile/${user.email}`}><RxDashboard className="text-lg"></RxDashboard> Dashboard</Link></li>
                     }
-                    <li onClick={handleLogOut}><Link>Log Out</Link></li>
+                    <li onClick={handleLogOut} className="mt-2"><Link><MdLogout className="text-lg"></MdLogout> Log Out</Link></li>
                 </ul>
 
             </>

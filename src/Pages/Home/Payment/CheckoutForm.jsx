@@ -107,7 +107,7 @@ const CheckoutForm = ({ classData }) => {
                           `
                         }
                       });
-                    // navigate('/dashboard/paymentHistory');
+                    navigate(`/dashboard/enrolled/${user.email}`);
                 }
             }
         }
@@ -138,7 +138,7 @@ const CheckoutForm = ({ classData }) => {
             <p className="text-red-600">{error}</p>
             {
                 transactionId ? 
-                <p className="text-green-600">Your transaction Id: {transactionId}</p> 
+                <span className="font-medium text-gray-500">Your Transaction Id:<p className="text-green-600"> {transactionId}</p></span> 
                 : ''
             }
         </form>
