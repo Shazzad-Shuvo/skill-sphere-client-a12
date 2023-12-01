@@ -1,4 +1,4 @@
-import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUsers, } from "react-icons/fa";
+import {  FaBook, FaCalendar, FaHome, FaList, FaUsers, } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
