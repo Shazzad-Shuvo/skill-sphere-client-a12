@@ -73,33 +73,15 @@ const Dashboard = () => {
                                         <>
                                             {/* show if user is a general user */}
                                             <li>
-                                                <NavLink to='/dashboard/userHome'>
+                                                <NavLink to={`/dashboard/userProfile/${user.email}`}>
                                                     <FaHome></FaHome>
-                                                    User Home
+                                                    User Profile
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <NavLink to='/dashboard/history'>
+                                                <NavLink to='/dashboard/enrolled'>
                                                     <FaCalendar></FaCalendar>
-                                                    Not History
-                                                </NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink to='/dashboard/cart'>
-                                                    <FaShoppingCart></FaShoppingCart>
-                                                    My Cart
-                                                </NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink to='/dashboard/review'>
-                                                    <FaAd></FaAd>
-                                                    Add Review
-                                                </NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink to='/dashboard/paymentHistory'>
-                                                    <FaList></FaList>
-                                                    Real Payment History
+                                                    My Enrolled Classes
                                                 </NavLink>
                                             </li>
                                         </>

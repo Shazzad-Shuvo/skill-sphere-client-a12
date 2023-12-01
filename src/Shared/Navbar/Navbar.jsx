@@ -39,6 +39,9 @@ const Navbar = () => {
                     {
                         user && isTeacher && <li><Link to={`/dashboard/teacherProfile/${user.email}`}>Dashboard</Link></li>
                     }
+                    {
+                        user && !isTeacher && !isAdmin && <li><Link to={`/dashboard/userProfile/${user.email}`}>Dashboard</Link></li>
+                    }
                     <li onClick={handleLogOut}><Link>Log Out</Link></li>
                 </ul>
 

@@ -23,7 +23,7 @@ const ClassCard = ({ aClass }) => {
                         <p className="text-3xl font-extrabold text-blue-800">${price}</p>
                     </div>
                 </div>
-                <Link to={`/class/${_id}`}>
+                <Link to={`/classDetails/${_id}`}>
                     <div className="card-actions w-full">
                         <button className="btn w-full bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white">Enroll</button>
                     </div>

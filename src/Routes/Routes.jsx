@@ -18,6 +18,8 @@ import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
 import AllClassRequests from "../Pages/Dashboard/AllClassRequests/AllClassRequests";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import ClassDetails from "../Pages/ClassDetails/ClassDetails";
+import Payment from "../Pages/Home/Payment/Payment";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 
 
 
@@ -37,8 +39,9 @@ export const router = createBrowserRouter([
         loader: () => fetch('http://localhost:5000/allApprovedClasses')
       },
       {
-        path: '/class/:id',
-        element: <ClassDetails></ClassDetails>
+        path: '/classDetails/:id',
+        element: <PrivateRoute><ClassDetails></ClassDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
       },
       {
         path: '/teach',
@@ -95,9 +98,19 @@ export const router = createBrowserRouter([
         path: 'updateClass/:id',
         element: <TeacherRoute><UpdateClass></UpdateClass></TeacherRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
-      }
+      },
 
       // normal user routes
+      {
+        path: 'userProfile/:email',
+        element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
+      },
+      {
+        path: 'payment/:id',
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+      },
     ]
   }
 ]);
