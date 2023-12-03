@@ -1,8 +1,9 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 const EnrolledClassCard = ({ enrolled }) => {
-    const { image, title, name } = enrolled;
+    const { _id, image, title, name } = enrolled;
     return (
         <div className="flex flex-col justify-between bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
             <div>
@@ -13,9 +14,11 @@ const EnrolledClassCard = ({ enrolled }) => {
 
                 </div>
             </div>
-            <div className="p-5">
-                <button className="btn btn-ghost text-cyan-500 font-medium">Continue <FaArrowRightLong></FaArrowRightLong></button>
-            </div>
+            <Link to={`/dashboard/enrolled/${_id}`}>
+                <div className="p-5">
+                    <button className="btn btn-ghost text-cyan-500 font-medium">Continue <FaArrowRightLong></FaArrowRightLong></button>
+                </div>
+            </Link>
         </div>
     );
 };

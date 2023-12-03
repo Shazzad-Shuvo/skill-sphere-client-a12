@@ -30,19 +30,31 @@ const MyClassesDetails = () => {
         }
     })
 
-    const { data: classAssignments = [] } = useQuery({
+    // fetch class wise assignments from db
+    const { data: classAssignments = [], refetch } = useQuery({
         queryKey: ['classAssignments'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/assignments`);
+            const res = await axiosPublic.get(`/assignments?id=${classId.id}`);
             return res.data;
         }
     })
 
-    // tanstack mutation
+
+    const date = new Date().toISOString().split('T')[0];
+    // fetch class wise submitted assignments for today's date from db
+    const { data: submittedAssignments = [] } = useQuery({
+        queryKey: ['submittedAssignments'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/submitted?id=${classId.id}&date=${date}`);
+            return res.data;
+        }
+    })
+
+    // tanstack mutation--------------------------------------
     const mutation = useMutation({
         mutationFn: async (assignmentData) => {
             return await axiosSecure.post('/assignments', assignmentData)
-        },
+        }
     })
 
     const onSubmit = async (data) => {
@@ -62,6 +74,7 @@ const MyClassesDetails = () => {
             const assignmentRes = await mutation.mutateAsync(assignmentData);
             if (assignmentRes.data.insertedId) {
                 reset();
+                refetch();
                 Swal.fire({
                     title: `"${data.title}" assignment added `,
                     showClass: {
@@ -115,7 +128,10 @@ const MyClassesDetails = () => {
     return (
         <div>
             <SectionTitle heading={aClass.title} subHeading="See Stat and Add Assignment"></SectionTitle>
-            
+
+            <div className="flex justify-center mb-6">
+                <h2 className="text-3xl text-cyan-500 font-medium border-b-2 pb-2 border-cyan-600 w-3/12 text-center">Class Progress</h2>
+            </div>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mt-3">
 
                 {/* total enrollment card */}
@@ -155,7 +171,7 @@ const MyClassesDetails = () => {
                                 Per Day Assignment Submitted
                             </h3>
                             <h3 className="text-center text-white text-3xl mt-2 font-bold">
-                                RM 27,580
+                                {submittedAssignments.length}
                             </h3>
                         </div>
                     </div>
@@ -163,6 +179,9 @@ const MyClassesDetails = () => {
             </div>
 
             {/* create assignment modal */}
+            <div className="flex justify-center mb-6 mt-10">
+                <h2 className="text-3xl text-cyan-500 font-medium border-b-2 pb-2 border-cyan-600 w-4/12 text-center">Class Assignment</h2>
+            </div>
             <div className="card-actions mt-10">
                 <button className="btn bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white rounded-full" onClick={() => document.getElementById('my_modal_1').showModal()}><FaPlus className="text-lg"></FaPlus> Create Assignment</button>
                 <dialog id="my_modal_1" className="modal -z-10">
@@ -211,7 +230,6 @@ const MyClassesDetails = () => {
                                 </div>
                                 <button
                                     className="btn bg-gradient-to-r from-cyan-300/80 to-blue-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-blue-700/80 text-white btn-block"
-                                // onClick={() => document.getElementById('my_modal_1').close()}
                                 >Create</button>
                             </form>
                         </div>

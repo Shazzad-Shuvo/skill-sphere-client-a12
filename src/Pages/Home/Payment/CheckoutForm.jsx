@@ -107,7 +107,7 @@ const CheckoutForm = ({ classData }) => {
                           `
                         }
                       });
-                    navigate(`/dashboard/enrolled/${user.email}`);
+                    navigate(`/dashboard/enrolled`);
                 }
             }
         }

@@ -22,6 +22,7 @@ import Payment from "../Pages/Home/Payment/Payment";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses/EnrolledClasses";
 import MyClassesDetails from "../Pages/Dashboard/MyClassesDetails/MyClassesDetails";
+import EnrolledClassDetails from "../Pages/Dashboard/EnrolledClassDetails/EnrolledClassDetails";
 
 
 
@@ -115,8 +116,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'enrolled',
-        element: <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>,
-        // loader: ({params}) => fetch(`http://localhost:5000/enrolled/${params.email}`)
+        element: <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>
+      },
+      {
+        path: 'enrolled/:id',
+        element: <PrivateRoute><EnrolledClassDetails></EnrolledClassDetails></PrivateRoute>
       },
       {
         path: 'payment/:id',

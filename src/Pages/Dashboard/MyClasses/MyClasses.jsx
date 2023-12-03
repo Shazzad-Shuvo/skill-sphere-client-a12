@@ -50,7 +50,7 @@ const MyClasses = () => {
     return (
         <div>
             <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">Teacher Requests</h2>
+                <h2 className="text-3xl text-cyan-500 font-medium border-b-2 p-2 border-cyan-600 text-center">Teacher Requests</h2>
             </div>
             <div className="overflow-x-auto mt-10">
                 <table className="table table-zebra">
