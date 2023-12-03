@@ -163,6 +163,7 @@ const MyClassesDetails = () => {
                         </div>
                     </div>
                 </div>
+                {/* per day assignment count */}
                 <div className="relative w-full h-52 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out bg-[url('https://i.ibb.co/PjHwsT8/card-bg1.jpg')]">
                     <div className="absolute inset-0 bg-blue-900 bg-opacity-75 transition duration-300 ease-in-out"></div>
                     <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">

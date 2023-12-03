@@ -7,7 +7,6 @@ import { RxDashboard } from "react-icons/rx";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    console.log(user);
     const [isAdmin] = useAdmin();
     const [isTeacher] = useTeacher();
 
