@@ -111,10 +111,13 @@ const MyClasses = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <button
-                                            className="btn bg-gradient-to-r from-cyan-300/80 to-cyan-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-cyan-700/80 text-white">
-                                            Details
-                                        </button>
+                                        <Link to={`/dashboard/myClass/${aClass._id}`}>
+                                            <button
+                                                disabled={aClass.status === 'approved' ? false : true}
+                                                className="btn bg-gradient-to-r from-cyan-300/80 to-cyan-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-cyan-700/80 text-white">
+                                                Details
+                                            </button>
+                                        </Link>
                                     </td>
                                 </tr>
                             )

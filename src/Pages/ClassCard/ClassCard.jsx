@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ClassCard = ({ aClass }) => {
 
-    const { _id, title, name, image, price, description } = aClass;
+    const { _id, title, name, image, price, description, enrolledStudent } = aClass;
 
     return (
         <div className="card bg-base-100 shadow-xl mx-5">
@@ -14,7 +14,7 @@ const ClassCard = ({ aClass }) => {
                         <p className="text-gray-400 font-medium mt-2">{name}</p>
                     </div>
                     <div className="">
-                        <p className="my-2 rounded-full bg-green-400 py-1 px-2 text-xs font-medium text-white text-center">Enrolled : 300</p>
+                        <p className="my-2 rounded-full bg-green-400 py-1 px-2 text-xs font-medium text-white text-center">Enrolled : {enrolledStudent}</p>
                     </div>
                     <div>
                         <p>{description}</p>

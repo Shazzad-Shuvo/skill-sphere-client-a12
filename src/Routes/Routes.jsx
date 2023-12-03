@@ -21,6 +21,7 @@ import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 import Payment from "../Pages/Home/Payment/Payment";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses/EnrolledClasses";
+import MyClassesDetails from "../Pages/Dashboard/MyClassesDetails/MyClassesDetails";
 
 
 
@@ -96,6 +97,11 @@ export const router = createBrowserRouter([
         element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
       },
       {
+        path: 'myClass/:id',
+        element: <TeacherRoute><MyClassesDetails></MyClassesDetails></TeacherRoute>
+
+      },
+      {
         path: 'updateClass/:id',
         element: <TeacherRoute><UpdateClass></UpdateClass></TeacherRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
@@ -108,7 +114,7 @@ export const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`)
       },
       {
-        path: 'enrolled/:email',
+        path: 'enrolled',
         element: <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>,
         // loader: ({params}) => fetch(`http://localhost:5000/enrolled/${params.email}`)
       },

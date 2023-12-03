@@ -91,7 +91,7 @@ const Dashboard = () => {
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <NavLink to={`/dashboard/enrolled/${user.email}`}>
+                                                <NavLink to='/dashboard/enrolled'>
                                                     <FaCalendar></FaCalendar>
                                                     My Enrolled Classes
                                                 </NavLink>

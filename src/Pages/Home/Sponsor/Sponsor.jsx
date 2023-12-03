@@ -3,7 +3,9 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const Sponsor = () => {
     return (
         <div className="my-20">
-            <SectionTitle heading="Collaborators" subHeading=""></SectionTitle>
+            <div className="mx-5">
+                <SectionTitle heading="Collaborators" subHeading=""></SectionTitle>
+            </div>
             <div className="container flex flex-col items-center gap-8 mx-auto my-8">
                 <p className="text-base font-medium leading-7 text-center text-dark-grey-600">Endorsed by renowned global corporations</p>
                 <div className="flex flex-wrap items-center justify-center w-full gap-6 lg:gap-0 lg:flex-nowrap lg:justify-between">

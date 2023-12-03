@@ -13,7 +13,7 @@ const EnrolledClasses = () => {
     const { data: enrolledClasses = [] } = useQuery({
         queryKey: ['enrolledClasses', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/enrolled/${user.email}`);
+            const res = await axiosSecure.get(`/enrolled?email=${user.email}`);
             return res.data;
         }
     });
