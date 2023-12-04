@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AllClassRequests = () => {
 
@@ -150,10 +151,12 @@ const AllClassRequests = () => {
                                     <td>
                                         {
                                             aClass.status === 'approved' ?
-                                                <button
-                                                    className="btn bg-gradient-to-r from-cyan-300/80 to-cyan-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-cyan-700/80 text-white">
-                                                    See Progress
-                                                </button>
+                                                <Link to={`/dashboard/class/${aClass._id}`}>
+                                                    <button
+                                                        className="btn bg-gradient-to-r from-cyan-300/80 to-cyan-500/80 hover:bg-gradient-to-r hover:from-cyan-500/80 hover:to-cyan-700/80 text-white">
+                                                        See Progress
+                                                    </button>
+                                                </Link>
                                                 :
                                                 <button
                                                     disabled

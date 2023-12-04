@@ -95,6 +95,7 @@ const EnrolledClassDetails = () => {
             const teacherReview = {
                 studentName: user.displayName,
                 studentImage: user.photoURL,
+                classId: classId.id,
                 classTitle: className.title,
                 rating: data.rating,
                 description: data.description

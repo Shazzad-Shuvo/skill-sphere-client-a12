@@ -3,17 +3,27 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Stats = () => {
+
     const axiosPublic = useAxiosPublic();
 
 
-    const { data: stats = {} } = useQuery({
-        queryKey: ['site-stats'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/stats');
-            return res.data;
-        }
-    })
-    console.log(stats);
+    // const { data: feedbacks = [] } = useQuery({
+    //     queryKey: ['feedbacks'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/review');
+    //         return res.data;
+    //     }
+    // });
+
+
+    // const { data: stats = {} } = useQuery({
+    //     queryKey: ['site-stats'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/stats');
+    //         return res.data;
+    //     }
+    // })
+    // console.log(stats);
 
     return (
         <div className="mt-20">

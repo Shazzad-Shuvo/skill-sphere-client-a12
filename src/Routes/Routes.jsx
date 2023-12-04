@@ -23,6 +23,7 @@ import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClasses/EnrolledClasses";
 import MyClassesDetails from "../Pages/Dashboard/MyClassesDetails/MyClassesDetails";
 import EnrolledClassDetails from "../Pages/Dashboard/EnrolledClassDetails/EnrolledClassDetails";
+import SeeProgress from "../Pages/Dashboard/SeeProgress/SeeProgress";
 
 
 
@@ -77,6 +78,11 @@ export const router = createBrowserRouter([
       {
         path: 'allClassRequests',
         element: <AdminRoute><AllClassRequests></AllClassRequests></AdminRoute>
+      },
+      {
+        path: 'class/:id',
+        element: <AdminRoute><SeeProgress></SeeProgress></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
       },
       {
         path: 'users',
