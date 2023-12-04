@@ -6,7 +6,7 @@ const ClassCard = ({ aClass }) => {
 
     return (
         <div className="card bg-base-100 shadow-xl mx-5">
-            <figure><img className="h-52" src={image} alt="" /></figure>
+            <figure><img className="" src={image} alt="" /></figure>
             <div className="card-body justify-between">
                 <div>
                     <h2 className="card-title">{title}</h2>

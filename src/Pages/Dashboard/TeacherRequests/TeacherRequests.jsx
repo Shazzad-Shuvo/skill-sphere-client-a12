@@ -17,8 +17,9 @@ const TeacherRequests = () => {
     const handleApprove = (teacher) => {
         axiosSecure.patch(`/teacher/accept/${teacher._id}`)
             .then(res => {
-                console.log(res.data);
-                if (res.data.modifiedCount > 0) {
+                // console.log(res);
+                // console.log(res.data.result);
+                if (res.data.result.modifiedCount > 0) {
                     refetch();
                     Swal.fire({
                         title: `${teacher.name} has been approved as a teacher`,
@@ -37,14 +38,15 @@ const TeacherRequests = () => {
                           `
                         }
                     });
+
                 }
             })
     }
     const handleReject = (teacher) => {
         axiosSecure.patch(`/teacher/reject/${teacher._id}`)
             .then(res => {
-                console.log(res.data);
-                if (res.data.modifiedCount > 0) {
+                // console.log(res.data);
+                if (res.data.result.modifiedCount > 0) {
                     refetch();
                     Swal.fire({
                         title: `${teacher.name} has been rejected`,
@@ -109,37 +111,20 @@ const TeacherRequests = () => {
                                     <td>{teacher.category}</td>
                                     <td>{teacher.status}</td>
                                     <td>
-                                        {
-                                            teacher.status === 'pending' ?
-                                                <button
-                                                    onClick={() => handleApprove(teacher)}
-                                                    className="btn bg-gradient-to-r from-green-300/80 to-green-500/80 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-green-700/80 text-white">
-                                                    Approve
-                                                </button> :
-                                                <button
-                                                    onClick={() => handleApprove(teacher)}
-                                                    disabled
-                                                    className="btn bg-gradient-to-r from-green-300/80 to-green-500/80 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-green-700/80 text-white">
-                                                    Approve
-                                                </button>
-                                        }
-
+                                        <button
+                                            onClick={() => handleApprove(teacher)}
+                                            disabled={teacher.status === 'pending' ? false : true}
+                                            className="btn bg-gradient-to-r from-green-300/80 to-green-500/80 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-green-700/80 text-white">
+                                            Approve
+                                        </button>
                                     </td>
                                     <td>
-                                        {
-                                            teacher.status === 'pending' ?
-                                                <button
-                                                    onClick={() => handleReject(teacher)}
-                                                    className="btn bg-gradient-to-r from-red-300/80 to-red-500/80 hover:bg-gradient-to-r hover:from-red-500/80 hover:to-red-700/80 text-white">
-                                                    Reject
-                                                </button> :
-                                                <button
-                                                    onClick={() => handleReject(teacher)}
-                                                    disabled
-                                                    className="btn bg-gradient-to-r from-red-300/80 to-red-500/80 hover:bg-gradient-to-r hover:from-red-500/80 hover:to-red-700/80 text-white">
-                                                    Reject
-                                                </button>
-                                        }
+                                        <button
+                                            onClick={() => handleReject(teacher)}
+                                            disabled={teacher.status === 'pending' ? false : true}
+                                            className="btn bg-gradient-to-r from-red-300/80 to-red-500/80 hover:bg-gradient-to-r hover:from-red-500/80 hover:to-red-700/80 text-white">
+                                            Reject
+                                        </button>
                                     </td>
                                 </tr>
                             )
