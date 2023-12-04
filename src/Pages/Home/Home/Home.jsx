@@ -4,8 +4,8 @@ import Feedback from "../Feedback/Feedback";
 import Instructor from "../Instructor/Instructor";
 import Newsletter from "../Newsletter/Newsletter";
 import PopularCourses from "../PopularCourses/PopularCourses";
+import SiteData from "../SiteData/SiteData";
 import Sponsor from "../Sponsor/Sponsor";
-import Stats from "../Stats/Stats";
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularCourses></PopularCourses>
             <Instructor></Instructor>
-            {/* <Stats></Stats> */}
+            <SiteData></SiteData>
             <Coupon></Coupon>
             <Feedback></Feedback>
             <Newsletter></Newsletter>

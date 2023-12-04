@@ -23,7 +23,7 @@ const PopularCourses = () => {
             return res.data;
         }
     });
-    console.log(featured);
+    // console.log(featured);
 
     return (
         <div>
