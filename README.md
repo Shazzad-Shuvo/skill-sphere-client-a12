@@ -6,6 +6,18 @@ Site Link:
 
 - [Skill-Sphere](https://skill-sphere.web.app/)
 
+### Tools & Technologies Used:
+- Tailwind
+- React
+- React router
+- MongoDb
+- Node.js
+- Express.js
+- Firebase
+- Json Web Token
+- Stripe 
+
+
 # Features:  
 - user can sigup/login from homepage, see all classes available from all clases page, and upon login/register apply to become a teacher.
 - students/teachers/admin can go to dashboard by clicking on image on the top right corner of the page, logout option is also available there.
